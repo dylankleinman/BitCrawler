@@ -35,7 +35,6 @@ public class PathFinder : MonoBehaviour
     private void CalculatePath()
     {
         LoadBlocks();
-        //ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
     }
@@ -103,13 +102,6 @@ public class PathFinder : MonoBehaviour
             neighbour.exploredFrom = searchCenter;
             //print("Queueing " + neighbour);
         }
-    }
-
-
-    private void ColorStartAndEnd()
-    {
-        StartWayPoint.SetTopColor(Color.green);
-        EndWayPoint.SetTopColor(Color.red);
     }
 
 

@@ -25,12 +25,6 @@ public class Waypoint : MonoBehaviour
         );
     }
 
-    public void SetTopColor(Color color)
-    {
-        MeshRenderer topMeshRenderer =  transform.Find("Top").GetComponent<MeshRenderer>();  //looks at children
-        topMeshRenderer.material.color = color;
-    }
-
     public int GetGridSize()
     {
         return gridSize;
@@ -39,9 +33,12 @@ public class Waypoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isExplored)
-        {
-            //neighbour.SetTopColor(Color.blue);  // todo set top color
-        }
+
     }
+
+    void OnMouseOver()
+    {
+        print(GetGridPos().x + "," + GetGridPos().y);
+    }
+
 }
