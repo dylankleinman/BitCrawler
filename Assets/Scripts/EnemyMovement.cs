@@ -17,14 +17,14 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator FollowPath(List<Waypoint> path)
     {
-        print("Starting Patrol");
+        //print("Starting Patrol");
         foreach (Waypoint Waypoint in path)
         {
             //print("Vising block: " + Waypoint.name);
             transform.position = Waypoint.transform.position;
             yield return new WaitForSeconds(1f);
         }
-        print("Finishing Patrol");
+        //print("Finishing Patrol");
     }
 
     // Update is called once per frame
