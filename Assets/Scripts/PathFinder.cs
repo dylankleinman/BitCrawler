@@ -12,7 +12,7 @@ public class PathFinder : MonoBehaviour
     Waypoint searchCenter;
     [SerializeField] Waypoint StartWayPoint, EndWayPoint;
 
-    List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] List<Waypoint> path = new List<Waypoint>();
 
     Vector2Int[] directions =
     {
@@ -24,11 +24,20 @@ public class PathFinder : MonoBehaviour
 
     public List<Waypoint> GetPath()
     {
+        if(path.Count == 0)
+        {
+            CalculatePath();
+        }
+        return path;
+
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
-        ColorStartAndEnd();
+        //ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
-        return path;
     }
 
     private void CreatePath()
