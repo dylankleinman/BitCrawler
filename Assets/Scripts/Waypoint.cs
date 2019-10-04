@@ -6,10 +6,14 @@ public class Waypoint : MonoBehaviour
 {
     [SerializeField] Color exploredColor;
 
+    public bool isPlaceable = true;
+
     Vector2Int gridPos;
     const int gridSize = 10;
     public bool isExplored = false;
     public Waypoint exploredFrom;
+
+    [SerializeField] Tower towerPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +42,19 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
-        print(GetGridPos().x + "," + GetGridPos().y);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                var newTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
+                newTower.transform.parent = GameObject.Find("Towers").transform;
+            }
+            else
+            {
+                print("Cant place tower here");
+            }
+        }
     }
 
 }

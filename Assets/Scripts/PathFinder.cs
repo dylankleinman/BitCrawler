@@ -41,18 +41,25 @@ public class PathFinder : MonoBehaviour
 
     private void CreatePath()
     {
-        path.Add(EndWayPoint);
+        SetAsPath(EndWayPoint);
+
         Waypoint previous = EndWayPoint.exploredFrom;
         while(previous != StartWayPoint)
         {
             //add intermediate waypoints
-            path.Add(previous);
+            SetAsPath(previous);
             previous = previous.exploredFrom;
         }
         //add start waypoint
-        path.Add(StartWayPoint);
+        SetAsPath(StartWayPoint);
         //reverse the list
         path.Reverse();
+    }
+
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        waypoint.isPlaceable = false;  //dont allow tower placement
     }
 
     private void BreadthFirstSearch()
