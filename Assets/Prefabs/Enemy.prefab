@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289942997295908}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -32.40259, y: -3.08, z: -42.168793}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4370127362219154}
@@ -64,6 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ce35d03bc03400e8dd14e8e4baff1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementPerFrame: 0.2
+  waypointDwellTime: 0.4
 --- !u!114 &114078703179129330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19193,6 +19195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Hit Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4208721479801298, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19237,12 +19244,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198554004130006392, guid: dcf9cd10c07cf0c49863969befadb243,
+    - target: {fileID: 198098995208406150, guid: dcf9cd10c07cf0c49863969befadb243,
         type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -19252,7 +19254,7 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198098995208406150, guid: dcf9cd10c07cf0c49863969befadb243,
+    - target: {fileID: 198554004130006392, guid: dcf9cd10c07cf0c49863969befadb243,
         type: 3}
       propertyPath: playOnAwake
       value: 0

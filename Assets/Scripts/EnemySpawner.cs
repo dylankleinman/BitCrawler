@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            var newEnemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
+            var newEnemy = Instantiate(enemyPrefab, enemyPrefab.transform.position, transform.rotation);
             newEnemy.transform.parent = GameObject.Find("Enemies").transform;
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }

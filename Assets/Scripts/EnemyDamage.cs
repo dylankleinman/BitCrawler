@@ -28,7 +28,9 @@ public class EnemyDamage : MonoBehaviour
     {
         var deathParticles = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         deathParticles.Play();
-        Destroy(gameObject);
+        Destroy(deathParticles.gameObject, deathParticles.main.duration);
+
+        Destroy(gameObject); //remove enemy
     }
 
     private void ProcessHit()

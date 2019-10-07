@@ -9,6 +9,7 @@ public class PathFinder : MonoBehaviour
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true; //state todo make private
 
+    [SerializeField] GameObject enemyBlock;
     Waypoint searchCenter;
     [SerializeField] Waypoint StartWayPoint, EndWayPoint;
 
@@ -42,16 +43,19 @@ public class PathFinder : MonoBehaviour
     private void CreatePath()
     {
         SetAsPath(EndWayPoint);
+        ReplacePathBlocks(EndWayPoint);
 
         Waypoint previous = EndWayPoint.exploredFrom;
         while(previous != StartWayPoint)
         {
             //add intermediate waypoints
             SetAsPath(previous);
+            ReplacePathBlocks(previous);
             previous = previous.exploredFrom;
         }
         //add start waypoint
         SetAsPath(StartWayPoint);
+        ReplacePathBlocks(StartWayPoint);
         //reverse the list
         path.Reverse();
     }
@@ -65,7 +69,9 @@ public class PathFinder : MonoBehaviour
     private void BreadthFirstSearch()
     {
         queue.Enqueue(StartWayPoint);
-        while(queue.Count > 0 && isRunning)
+
+
+        while (queue.Count > 0 && isRunning)
         {
             searchCenter = queue.Dequeue();
             HaltIfEndFound();
@@ -74,11 +80,18 @@ public class PathFinder : MonoBehaviour
         }
     }
 
+    private void ReplacePathBlocks(Waypoint waypoint)
+    {
+        var child = waypoint.transform.Find("Block_Friendly").gameObject;
+        var newEnemyBlock = Instantiate(enemyBlock, child.transform.position, child.transform.rotation);
+        newEnemyBlock.transform.parent = waypoint.transform;
+        Destroy(child);
+    }
+
     private void HaltIfEndFound()
     {
         if (searchCenter == EndWayPoint)
         {
-            print("Searching from end node, therefore stopping"); // todo remove log
             isRunning = false;
         }
     }
@@ -126,14 +139,7 @@ public class PathFinder : MonoBehaviour
             {
                 //add to dictionary
                 grid.Add(waypoint.GetGridPos(), waypoint);
-                //waypoint.SetTopColor(Color.black);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
