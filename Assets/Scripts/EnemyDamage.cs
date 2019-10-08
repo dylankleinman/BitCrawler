@@ -16,17 +16,17 @@ public class EnemyDamage : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        print("Particles Collided with enemy " + gameObject.name);
+        //print("Particles Collided with enemy " + gameObject.name);
         ProcessHit();
         if (hitPoints < 1)
         {
-            KillEnemy();
+            KillEnemy(deathParticlePrefab);
         }
     }
 
-    private void KillEnemy()
+    public void KillEnemy(ParticleSystem particleSystem)
     {
-        var deathParticles = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        var deathParticles = Instantiate(particleSystem, transform.position, Quaternion.identity);
         deathParticles.Play();
         Destroy(deathParticles.gameObject, deathParticles.main.duration);
 
