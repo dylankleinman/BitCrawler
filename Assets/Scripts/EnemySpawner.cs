@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float secondsBetweenSpawns = 10f;
     [SerializeField] int numEnemies = 10;
     [SerializeField] Text enemiesLeft;
+    [SerializeField] AudioClip spawnSound; 
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.transform.parent = GameObject.Find("Enemies").transform;
             numEnemies--;
             enemiesLeft.text = "Enemies Remaining: " + numEnemies.ToString();
+            GetComponent<AudioSource>().PlayOneShot(spawnSound);
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }

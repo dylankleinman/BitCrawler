@@ -7,6 +7,11 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] int hitPoints = 3;
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
+    [SerializeField] AudioClip enemyDamageSound;
+    [SerializeField] AudioClip enemyDeathSound;
+
+    //todo add text of enemy health above each enemy to indicate how many hitpoints are left
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,8 @@ public class EnemyDamage : MonoBehaviour
         deathParticles.Play();
         Destroy(deathParticles.gameObject, deathParticles.main.duration);
 
+        AudioSource.PlayClipAtPoint(enemyDeathSound,GameObject.Find("Main Camera").transform.position);
+
         Destroy(gameObject); //remove enemy
     }
 
@@ -37,5 +44,7 @@ public class EnemyDamage : MonoBehaviour
     {
         hitPoints--;
         hitParticlePrefab.Play();
+        print("playing sound");
+        GetComponent<AudioSource>().PlayOneShot(enemyDamageSound);
     }
 }

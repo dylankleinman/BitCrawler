@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        healthText.text = PlayerHealthPoints.ToString();
+        healthText.text = "Health: " + PlayerHealthPoints.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
