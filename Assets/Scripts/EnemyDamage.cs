@@ -36,15 +36,18 @@ public class EnemyDamage : MonoBehaviour
         Destroy(deathParticles.gameObject, deathParticles.main.duration);
 
         AudioSource.PlayClipAtPoint(enemyDeathSound,GameObject.Find("Main Camera").transform.position);
-
         Destroy(gameObject); //remove enemy
+        if(FindObjectsOfType<EnemyDamage>().Length == 1)
+        {
+            FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>().StopGame();
+        }
     }
 
     private void ProcessHit()
     {
         hitPoints--;
         hitParticlePrefab.Play();
-        print("playing sound");
+        //print("playing sound");
         GetComponent<AudioSource>().PlayOneShot(enemyDamageSound);
     }
 }

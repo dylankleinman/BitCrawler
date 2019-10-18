@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718045401b9e344fc86d71fc93dc444f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
+  hitPoints: 22
   hitParticlePrefab: {fileID: 5835899023416895763}
   deathParticlePrefab: {fileID: 7292451537003938058}
   enemyDamageSound: {fileID: 8300000, guid: 3294b43edc784470fb1986bdd70fc2c5, type: 3}

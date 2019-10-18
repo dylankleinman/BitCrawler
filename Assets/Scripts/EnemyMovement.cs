@@ -6,10 +6,9 @@ public class EnemyMovement : MonoBehaviour
 {
     //[SerializeField] List<Waypoint> path;
     // Start is called before the first frame update
-    [SerializeField] float movementPerFrame = 0.5f;
+    [SerializeField] public float movementPerFrame = 0.5f;
     [SerializeField] float waypointDwellTime = 1f;
     [SerializeField] ParticleSystem GoalParticles;
-
     void Start()
     {
         PathFinder pathFinder = FindObjectOfType<PathFinder>();
